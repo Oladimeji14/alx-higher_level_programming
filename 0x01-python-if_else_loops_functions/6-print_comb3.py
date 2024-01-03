@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-
-for tens_digit in range(10):
-    for units_digit in range(tens_digit + 1, 10):
-        if tens_digit < 9 or units_digit < 9:
-            print("{:d}{:d}, ".format(tens_digit, units_digit), end="")
+for x in range(0, 10):
+    for y in range(x + 1, 10):
+        if x == 8 and y == 9:
+            print('89')
         else:
-            print("{:d}{:d}".format(tens_digit, units_digit))
+            print('{}{}, '.format(x, y), end='')
