@@ -1,15 +1,12 @@
 #!/usr/bin/python3
 
-def custom_print_list(input_list=[], limit=0):
+def safe_print_list(my_list=[], x=0):
     count = 0
-    for index in range(limit):
+    for i in range(x):
         try:
-            print(input_list[index], end="")
+            print(my_list[i], end="")
             count += 1
         except IndexError:
             break
     print("")
-
-# Example Usage:
-my_custom_list = ["apple", "banana", "cherry", "date"]
-custom_print_list(my_custom_list, 3)
+    return count
