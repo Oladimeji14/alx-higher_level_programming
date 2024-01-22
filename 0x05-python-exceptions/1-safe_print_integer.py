@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-
-def custom_print_number(input_value):
+def safe_print_integer(value):
     try:
-        print("{:d}".format(input_value))
+        print("{:d}".format(value))
         return True
     except (ValueError, TypeError):
         return False
