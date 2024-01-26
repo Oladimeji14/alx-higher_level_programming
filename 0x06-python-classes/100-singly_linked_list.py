@@ -6,26 +6,26 @@
 class Node:
     """Represent a node in a singly-linked list."""
 
-    def __init__(self, data, next_node=None):
+    def __init__(self, value, next_node=None):
         """Initialize a new Node.
 
         Args:
-            data (int): The data of the new Node.
+            value (int): The data of the new Node.
             next_node (Node): The next node of the new Node.
         """
-        self.value = data
+        self.data = value
         self.next_node = next_node
 
     @property
-    def value(self):
+    def data(self):
         """Get/set the data of the Node."""
-        return self.__value
+        return self.__data
 
-    @value.setter
-    def value(self, new_value):
+    @data.setter
+    def data(self, new_value):
         if not isinstance(new_value, int):
             raise TypeError("data must be an integer")
-        self.__value = new_value
+        self.__data = new_value
 
     @property
     def next_node(self):
@@ -43,7 +43,7 @@ class SinglyLinkedList:
     """Represent a singly-linked list."""
 
     def __init__(self):
-        """Initalize a new SinglyLinkedList."""
+        """Initialize a new SinglyLinkedList."""
         self.__head = None
 
     def sorted_insert(self, new_value):
@@ -53,19 +53,19 @@ class SinglyLinkedList:
         ordered numerical position.
 
         Args:
-            new_value (Node): The new Node to insert.
+            new_value (int): The new Node to insert.
         """
         new_node = Node(new_value)
         if self.__head is None:
             new_node.next_node = None
             self.__head = new_node
-        elif self.__head.value > new_value:
+        elif self.__head.data > new_value:
             new_node.next_node = self.__head
             self.__head = new_node
         else:
             tmp = self.__head
             while (tmp.next_node is not None and
-                    tmp.next_node.value < new_value):
+                    tmp.next_node.data < new_value):
                 tmp = tmp.next_node
             new_node.next_node = tmp.next_node
             tmp.next_node = new_node
@@ -75,6 +75,6 @@ class SinglyLinkedList:
         values = []
         tmp = self.__head
         while tmp is not None:
-            values.append(str(tmp.value))
+            values.append(str(tmp.data))
             tmp = tmp.next_node
         return '\n'.join(values)
