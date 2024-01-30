@@ -23,16 +23,19 @@ import sys
 def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
     board = []
-    [board.append([]) for i in range(n)]
-    [row.append(' ') for i in range(n) for row in board]
-    return (board)
+    for i in range(n):
+        board.append([])
+    for row in board:
+        for i in range(n):
+            row.append(' ')
+    return board
 
 
 def board_deepcopy(board):
     """Return a deepcopy of a chessboard."""
     if isinstance(board, list):
         return list(map(board_deepcopy, board))
-    return (board)
+    return board
 
 
 def get_solution(board):
@@ -43,7 +46,7 @@ def get_solution(board):
             if board[r][c] == "Q":
                 solution.append([r, c])
                 break
-    return (solution)
+    return solution
 
 
 def xout(board, row, col):
@@ -112,7 +115,7 @@ def recursive_solve(board, row, queens, solutions):
     """
     if queens == len(board):
         solutions.append(get_solution(board))
-        return (solutions)
+        return solutions
 
     for c in range(len(board)):
         if board[row][c] == " ":
@@ -122,7 +125,7 @@ def recursive_solve(board, row, queens, solutions):
             solutions = recursive_solve(tmp_board, row + 1,
                                         queens + 1, solutions)
 
-    return (solutions)
+    return solutions
 
 
 if __name__ == "__main__":
