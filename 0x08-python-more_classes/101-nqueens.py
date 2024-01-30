@@ -2,7 +2,7 @@
 """Solves the N-queens puzzle.
 
 Determines all possible solutions to placing N
-N non-attacking queens on an NxN chessboard.
+non-attacking queens on an NxN chessboard.
 
 Example:
     $ ./101-nqueens.py N
@@ -24,10 +24,8 @@ def init_board(n):
     """Initialize an `n`x`n` sized chessboard with 0's."""
     board = []
     for i in range(n):
-        board.append([])
-    for row in board:
-        for i in range(n):
-            row.append(' ')
+        row = [' '] * n
+        board.append(row)
     return board
 
 
@@ -84,7 +82,7 @@ def xout(board, row, col):
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
-        board[r][c]
+        board[r][c] = "x"
         c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
@@ -132,7 +130,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-    if sys.argv[1].isdigit() is False:
+    if not sys.argv[1].isdigit():
         print("N must be a number")
         sys.exit(1)
     if int(sys.argv[1]) < 4:
